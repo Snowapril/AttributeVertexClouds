@@ -1,7 +1,8 @@
-# modern-opengl-oss-template
-This is opengl 4.5 template project for building several test project.
-All you need to do for new project is Updating Application class.
-If you need to modify framework codes, issueing please.
+# Attribute Vertex Clouds
+[![CodeFactor](https://www.codefactor.io/repository/github/snowapril/attributevertexclouds/badge)](https://www.codefactor.io/repository/github/snowapril/attributevertexclouds)[![Codacy Badge](https://app.codacy.com/project/badge/Grade/755ac32c60cd4fdd80934f7de453838d)](https://www.codacy.com/gh/Snowapril/AttributeVertexClouds/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Snowapril/AttributeVertexClouds&amp;utm_campaign=Badge_Grade)
+
+This project implements AttributeVertexClouds in the Book `GPU Zen: Advanced Rendering Techniques`
+![GPU Zen Thumbnail](https://m.media-amazon.com/images/I/51V7mGAYt3L.jpg)
 
 # dependency
 * cxxopts
