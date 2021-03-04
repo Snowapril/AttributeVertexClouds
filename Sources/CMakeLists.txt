@@ -1,5 +1,5 @@
 # Target name
-set(target cpp-oss-template)
+set(target AttributeVertexClouds)
 
 # Define root directory
 set(root_dir ${CMAKE_CURRENT_SOURCE_DIR}/..)
