@@ -75,7 +75,6 @@ void ComputeSmoothingNormals(const tinyobj::attrib_t& attrib, const tinyobj::sha
                 iter->second += normal;
             }
         }
-
     }  // f
 
     // Normalize the normals, that is, make them unit vectors
