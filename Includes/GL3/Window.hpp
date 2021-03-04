@@ -5,10 +5,8 @@
 #include <string>
 #include <vector>
 #include <functional>
-#include <Application.hpp>
 
 struct GLFWwindow;
-class Application;
 
 namespace GL3
 {
@@ -25,17 +23,13 @@ namespace GL3
 		//! Default destructor
 		~Window();
 		//! Initialize the window with given arguments
-		bool Initialize(const std::string& title, int width, int height);
+		bool Initialize(const std::string& title, int width, int height, GLFWwindow* sharedWindow = nullptr);
 		//! Destroy the created window context
 		void CleanUp();
 		//! Returns the GLFWwindow pointer
-		const GLFWwindow* GetWindow() const;
-		//! Returns whether if the opened window must be closed
-		bool CheckWindowShouldClose() const;
-		//! Poll window events
-		void PollEvents() const;
-		//! Swap buffers
-		void SwapBuffer() const;
+		GLFWwindow* GetGLFWWindow();
+		//! Returns the window extent
+		glm::ivec2 GetWindowExtent() const;
 		//! Process Input
 		void ProcessInput() const;
 		//! Mouse cursor position callback method.
