@@ -7,6 +7,7 @@ namespace GL3 {
 	void Shader::SendUniformVariable(const std::string& name, Type&& val)
 	{
 		static_assert("No implementation exists");
+		(void)name; (void)val;
 	}
 };
 
