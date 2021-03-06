@@ -21,7 +21,6 @@ namespace GL3 {
 	
 	bool Camera::SetupUniformBuffer()
 	{
-
 		glGenBuffers(1, &_uniformBuffer);
 		glBindBuffer(GL_UNIFORM_BUFFER, _uniformBuffer);
 		glBufferData(GL_UNIFORM_BUFFER, sizeof(glm::mat4) * 3, nullptr, GL_STATIC_DRAW);
