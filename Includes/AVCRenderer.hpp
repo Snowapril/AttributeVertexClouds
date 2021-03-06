@@ -3,13 +3,13 @@
 
 #include <GL3/Renderer.hpp>
 
-class SampleRenderer : public GL3::Renderer
+class AVCRenderer : public GL3::Renderer
 {
 public:
 	//! Default constructor
-	SampleRenderer();
+	AVCRenderer();
 	//! Default desctrutor
-	~SampleRenderer();
+	~AVCRenderer();
 protected:
 	bool OnInitialize(const cxxopts::ParseResult& configure) override;
 	void OnCleanUp() override;
@@ -19,4 +19,4 @@ protected:
 	void OnProcessInput(unsigned int key) override;
 };
 
-#endif //! end of SampleRenderer.hpp
+#endif //! end of AVCRenderer.hpp

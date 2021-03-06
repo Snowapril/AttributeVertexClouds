@@ -1,15 +1,15 @@
-#ifndef SAMPLE_APP_HPP
-#define SAMPLE_APP_HPP
+#ifndef AVC_BLOCKWORLD_HPP
+#define AVC_BLOCKWORLD_HPP
 
 #include <GL3/Application.hpp>
 
-class SampleApp : public GL3::Application
+class AVCBlockWorld : public GL3::Application
 {
 public:
 	//! Default constructor
-	SampleApp();
+	AVCBlockWorld();
 	//! Default desctrutor
-	~SampleApp();
+	~AVCBlockWorld();
 	//! Returns overrided Application title
 	const char* GetAppTitle() const override
 	{
@@ -25,4 +25,4 @@ protected:
 private:
 };
 
-#endif //! end of SampleApp.hpp
+#endif //! end of AVCBlockWorld.hpp

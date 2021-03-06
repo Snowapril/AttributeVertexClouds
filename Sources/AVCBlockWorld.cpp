@@ -1,4 +1,4 @@
-#include <SampleApp.hpp>
+#include <AVCBlockWorld.hpp>
 #include <GL3/Window.hpp>
 #include <GL3/PerspectiveCamera.hpp>
 #include <GL3/Shader.hpp>
@@ -9,17 +9,17 @@
 #define STB_IMAGE_IMPLEMENTATION
 #include <stb_image/stb_image.h>
 
-SampleApp::SampleApp()
+AVCBlockWorld::AVCBlockWorld()
 {
 	//! Do nothing
 }
 
-SampleApp::~SampleApp()
+AVCBlockWorld::~AVCBlockWorld()
 {
 	//! Do nothing
 }
 
-bool SampleApp::OnInitialize(std::shared_ptr<GL3::Window> window, const cxxopts::ParseResult& configure)
+bool AVCBlockWorld::OnInitialize(std::shared_ptr<GL3::Window> window, const cxxopts::ParseResult& configure)
 {
 	(void)configure;
 
@@ -60,23 +60,23 @@ bool SampleApp::OnInitialize(std::shared_ptr<GL3::Window> window, const cxxopts:
 	return true;
 }
 
-void SampleApp::OnCleanUp()
+void AVCBlockWorld::OnCleanUp()
 {
 	//! Do nothing
 }
 
-void SampleApp::OnUpdate(double dt)
+void AVCBlockWorld::OnUpdate(double dt)
 {
 	(void)dt;
 }
 
-void SampleApp::OnDraw()
+void AVCBlockWorld::OnDraw()
 {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glClearColor(0.0f, 0.0f, 0.8f, 1.0f);
 }
 
-void SampleApp::OnProcessInput(unsigned int key)
+void AVCBlockWorld::OnProcessInput(unsigned int key)
 {
 	(void)key;
 }
