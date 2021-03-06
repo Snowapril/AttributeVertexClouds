@@ -23,6 +23,10 @@ protected:
 	void OnProcessInput(unsigned int key) override;
 
 private:
+	GLuint _vao, _vbo;
+	float _blockSize;
+	size_t _gridLength;
+	size_t _gridBlockCounts;
 };
 
 #endif //! end of AVCBlockWorld.hpp

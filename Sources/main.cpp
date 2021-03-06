@@ -1,7 +1,7 @@
 #include <iostream>
 #include <cxxopts/cxxopts.hpp>
 
-#include <SampleRenderer.hpp>
+#include <AVCRenderer.hpp>
 #include <GL3/Window.hpp>
 #include <glfw/glfw3.h>
 #include <chrono>
@@ -13,7 +13,8 @@ int main(int argc, char* argv[])
 	options.add_options()
 		("t,title", "Window Title(default is 'modern-opengl-template')", cxxopts::value<std::string>()->default_value("modern-opengl-template"))
 		("w,width", "Window width(default is 1200)", cxxopts::value<int>()->default_value("1200"))
-		("h,height", "Window height(default is 900)", cxxopts::value<int>()->default_value("900"));
+		("h,height", "Window height(default is 900)", cxxopts::value<int>()->default_value("900"))
+		("g,grid", "Block world grid length(default is 10)", cxxopts::value<size_t>()->default_value("10"));
 
 	auto result = options.parse(argc, argv);
 
@@ -23,7 +24,7 @@ int main(int argc, char* argv[])
 		exit(0);
 	}
 
-	auto renderer = std::make_unique<SampleRenderer>();
+	auto renderer = std::make_unique<AVCRenderer>();
 	if (!renderer->Initialize(result))
 	{
 		std::cerr << "Failed to initialize the Renderer" << std::endl;
