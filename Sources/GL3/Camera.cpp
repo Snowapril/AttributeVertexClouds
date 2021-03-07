@@ -85,13 +85,13 @@ namespace GL3 {
 			this->_position += this->_direction * _speed;
 			break;
 		case GLFW_KEY_A:
-			this->_position += glm::cross(this->_direction, this->_up) * _speed;
+			this->_position -= glm::cross(this->_direction, this->_up) * _speed;
 			break;
 		case GLFW_KEY_S:
 			this->_position -= this->_direction * _speed;
 			break;
 		case GLFW_KEY_D:
-			this->_position -= glm::cross(this->_direction, this->_up) * _speed;
+			this->_position += glm::cross(this->_direction, this->_up) * _speed;
 			break;
 		default:
 			return;
