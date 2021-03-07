@@ -1,4 +1,4 @@
-#include <GL3/ObjLoader.hpp>
+#include <GL3/AssetLoader.hpp>
 #include <GL3/DebugUtils.hpp>
 #include <iostream>
 #include <algorithm>
@@ -112,7 +112,7 @@ inline bool operator<(const PackedVertex& v1, const PackedVertex& v2)
 
 namespace GL3 {
 
-    bool ObjLoader::LoadFile(const std::string& path, std::vector<float>& vertices, std::vector<unsigned int>& indices, VertexFormat format)
+    bool AssetLoader::LoadObjFile(const std::string& path, std::vector<float>& vertices, std::vector<unsigned int>& indices, VertexFormat format)
 	{
         tinyobj::attrib_t attrib;
         std::vector<tinyobj::shape_t> shapes;
@@ -297,4 +297,21 @@ namespace GL3 {
 
         return true;
     }
+
+    bool AssetLoader::LoadRawFile(const std::string& path, std::vector<char>& data)
+    {
+        std::ifstream file(path, std::ios::in | std::ios::binary | std::ios::ate);
+        if (!file.is_open())
+            return false;
+
+        const size_t fileSize = file.tellg();
+        data.resize(fileSize);
+        file.seekg(std::ios::beg);
+        file.read(&data[0], fileSize);
+        
+        file.close();
+
+        return true;
+    }
+
 }; //! end of Mesh.cpp
