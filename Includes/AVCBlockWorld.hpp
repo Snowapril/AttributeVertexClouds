@@ -2,6 +2,7 @@
 #define AVC_BLOCKWORLD_HPP
 
 #include <GL3/Application.hpp>
+#include <GL3/GLTypes.hpp>
 
 class AVCBlockWorld : public GL3::Application
 {
@@ -23,8 +24,9 @@ protected:
 	void OnProcessInput(unsigned int key) override;
 
 private:
-	GLuint _vao, _vbo;
+	GLuint _vao, _vbo, _terrain;
 	float _blockSize;
+	int _blockThreshold;
 	size_t _gridLength;
 	size_t _gridBlockCounts;
 };
