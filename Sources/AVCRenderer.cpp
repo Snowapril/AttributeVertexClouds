@@ -1,5 +1,6 @@
 #include <AVCRenderer.hpp>
 #include <AVCBlockWorld.hpp>
+#include <glad/glad.h>
 
 AVCRenderer::AVCRenderer()
 {
@@ -15,6 +16,9 @@ bool AVCRenderer::OnInitialize(const cxxopts::ParseResult& configure)
 {
 	if (!AddApplication(std::make_shared<AVCBlockWorld>(), configure))
 		return false;
+
+	glEnable(GL_DEPTH_TEST);
+	glEnable(GL_CULL_FACE);
 
 	return true;
 }
