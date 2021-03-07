@@ -4,6 +4,9 @@
 This project implements AttributeVertexClouds in the Book `GPU Zen: Advanced Rendering Techniques`
 ![GPU Zen Thumbnail](https://m.media-amazon.com/images/I/51V7mGAYt3L.jpg)
 
+## screenshot
+![BlockWorld Screenshot](blockworld.png)
+
 ## dependency
 *   cxxopts
 *   glad
