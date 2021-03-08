@@ -2,8 +2,11 @@
 #include <GL3/Application.hpp>
 #include <GL3/Camera.hpp>
 #include <GL3/Window.hpp>
+#include <GL3/PostProcessing.hpp>
 #include <glad/glad.h>
 #include <glfw/glfw3.h>
+
+static const float kClearColor[] = { 0.81f, 0.81f, 0.81f, 1.0f };
 
 namespace GL3 {
 
@@ -32,8 +35,15 @@ namespace GL3 {
 		using namespace std::placeholders;
 		std::function<void(unsigned int)> inputCallback = std::bind(&Renderer::ProcessInput, this, std::placeholders::_1);
 		std::function<void(double, double)> cursorCallback = std::bind(&Renderer::ProcessCursorPos, this, std::placeholders::_1, std::placeholders::_2);
+		std::function<void(int, int)> resizeCallback = std::bind(&Renderer::ProcessResize, this, std::placeholders::_1, std::placeholders::_2);
 		_mainWindow->operator+=(inputCallback);
 		_mainWindow->operator+=(cursorCallback);
+		_mainWindow->operator+=(resizeCallback);
+
+		_postProcessing = std::make_unique<PostProcessing>();
+		if (!_postProcessing->Initialize())
+			return false;
+		_postProcessing->Resize(_mainWindow->GetWindowExtent());
 
 		//! Initialize implementation parts
 		if (!OnInitialize(configure))
@@ -76,11 +86,13 @@ namespace GL3 {
 		//! Get current application and it must be valid pointer
 		auto app = GetCurrentApplication();
 		assert(app);
+		const glm::ivec2 windowExtent = _mainWindow->GetWindowExtent();
 
 		//! If measure GPU performance is enabled.
 		//! Below draw calls will not be rendered to screen because of GL_RASTERIZER_DISCARD.
 		if (_bMeasureGPUTime)
 		{
+			glViewport(0, 0, windowExtent.x, windowExtent.y);
 			glEnable(GL_RASTERIZER_DISCARD);
 
 			BeginGPUMeasure();
@@ -98,9 +110,16 @@ namespace GL3 {
 		}
 
 		//! Actual rendering part.
+		glViewport(0, 0, windowExtent.x, windowExtent.y);
+		glBindFramebuffer(GL_FRAMEBUFFER, _postProcessing->GetFramebuffer());
+		glClearBufferfv(GL_COLOR, 0, kClearColor);
+		glClearBufferfi(GL_DEPTH_STENCIL, 0, 1.0f, 0);
 		OnBeginDraw();
 		app->Draw();
 		OnEndDraw();
+
+		glBindFramebuffer(GL_FRAMEBUFFER, 0);
+		_postProcessing->Render();
 	}
 
 	void Renderer::CleanUp()
@@ -169,6 +188,16 @@ namespace GL3 {
 		auto app = GetCurrentApplication();
 		assert(app);
 		app->ProcessCursorPos(xpos, ypos);
+	}
+
+	void Renderer::ProcessResize(int width, int height)
+	{
+		_postProcessing->Resize(glm::ivec2(width, height));
+		OnProcessResize(width, height);
+
+		auto app = GetCurrentApplication();
+		assert(app);
+		app->ProcessResize(width, height);
 	}
 
 	void Renderer::SwitchApplication(std::shared_ptr< GL3::Application > app)
