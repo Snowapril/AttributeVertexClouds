@@ -136,3 +136,9 @@ void AVCBlockWorld::OnProcessInput(unsigned int key)
 	if (key == GLFW_KEY_RIGHT_BRACKET)
 		_blockThreshold = _blockThreshold < 15 ? _blockThreshold + 1 : 15;
 }
+
+void AVCBlockWorld::OnProcessResize(int width, int height)
+{
+	(void)width;
+	(void)height;
+}

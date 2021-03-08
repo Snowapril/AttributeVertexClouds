@@ -47,3 +47,9 @@ void AVCRenderer::OnProcessInput(unsigned int key)
 {
 	(void)key;
 }
+
+void AVCRenderer::OnProcessResize(int width, int height)
+{
+	(void)width;
+	(void)height;
+}

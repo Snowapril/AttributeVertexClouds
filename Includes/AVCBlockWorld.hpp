@@ -22,6 +22,7 @@ protected:
 	void OnUpdate(double dt) override;
 	void OnDraw() override;
 	void OnProcessInput(unsigned int key) override;
+	void OnProcessResize(int width, int height) override;
 
 private:
 	GLuint _vao, _vbo, _terrain;
