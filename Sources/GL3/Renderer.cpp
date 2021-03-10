@@ -101,8 +101,8 @@ namespace GL3 {
 
 			app->Draw();
 
-			size_t elapsed_ms = EndGPUMeasure() / 1000000;
-			std::clog << '\r' << "Geometry Processing Measured " << elapsed_ms << "(ms)" << std::flush;
+			size_t elapsed_microsec = EndGPUMeasure() / 1000;
+			std::clog << '\r' << "Geometry Processing Measured " << elapsed_microsec << "(microsecond)" << std::flush;
 
 			OnEndDraw();
 
@@ -119,6 +119,8 @@ namespace GL3 {
 		OnEndDraw();
 
 		glBindFramebuffer(GL_FRAMEBUFFER, 0);
+		glClearBufferfv(GL_COLOR, 0, kClearColor);
+		glClearBufferfi(GL_DEPTH_STENCIL, 0, 1.0f, 0);
 		_postProcessing->Render();
 	}
 

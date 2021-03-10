@@ -36,14 +36,6 @@ namespace GL3 {
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
 		glFramebufferTexture(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, _depth, 0);
-		glBindTexture(GL_TEXTURE_2D, 0);
-
-		if (glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE)
-		{
-			StackTrace::PrintStack();
-			std::cerr << "Failed to create framebuffer[INCOMPLETE]" << std::endl;
-			return false;
-		}
 
 		glBindFramebuffer(GL_FRAMEBUFFER, 0);
 

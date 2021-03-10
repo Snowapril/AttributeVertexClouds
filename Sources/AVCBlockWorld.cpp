@@ -114,9 +114,6 @@ void AVCBlockWorld::OnUpdate(double dt)
 
 void AVCBlockWorld::OnDraw()
 {
-	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-	glClearColor(0.0f, 0.0f, 0.8f, 1.0f);
-
 	auto& avcShader = _shaders["avc"];
 	avcShader->BindShaderProgram();
 	avcShader->SendUniformVariable("blockSize", _blockSize);
