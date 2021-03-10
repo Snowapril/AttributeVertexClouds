@@ -44,6 +44,7 @@ bool AVCBlockWorld::OnInitialize(std::shared_ptr<GL3::Window> window, const cxxo
 		return false;
 
 	defaultShader->BindUniformBlock("CamMatrices", 0);
+	defaultShader->BindFragDataLocation("fragColor", 0);
 	_shaders.emplace("avc", std::move(defaultShader));
 
 	stbi_set_flip_vertically_on_load(true);

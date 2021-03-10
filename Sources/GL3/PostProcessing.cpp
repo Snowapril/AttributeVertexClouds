@@ -61,6 +61,7 @@ namespace GL3 {
 		_shader->BindShaderProgram();
 		_shader->SendUniformVariable("color", 0);
 		_shader->SendUniformVariable("depth", 1);
+		_shader->BindFragDataLocation("fragColor", 0);
 
 		return true;
 	}
